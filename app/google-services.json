@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1009794906764",
+    "firebase_url": "https://airpay-b70ea-default-rtdb.firebaseio.com",
+    "project_id": "airpay-b70ea",
+    "storage_bucket": "airpay-b70ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009794906764:android:4dc7e8325edb0c827e99a9",
+        "android_client_info": {
+          "package_name": "com.netsoftddevelopers.embtelcoms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009794906764-655fnlp14o4kriu7dm04nnl5felbb6mn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJfFgH9OPh0_PsOJT-HaZxyyY82mV2TSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009794906764-655fnlp14o4kriu7dm04nnl5felbb6mn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009794906764:android:9375511939a411617e99a9",
+        "android_client_info": {
+          "package_name": "com.netsoftddevelopers.vtuadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009794906764-655fnlp14o4kriu7dm04nnl5felbb6mn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJfFgH9OPh0_PsOJT-HaZxyyY82mV2TSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009794906764-655fnlp14o4kriu7dm04nnl5felbb6mn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

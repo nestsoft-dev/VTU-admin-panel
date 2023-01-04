@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#214"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Modify plan Prices"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/all"
+        android:layout_marginStart="20dp"
+        android:layout_centerInParent="true"
+        app:cardBackgroundColor="@color/white">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="3dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="select type"
+                android:textSize="18sp">
+
+            </TextView>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/selectType"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter plan ID"
+                android:id="@+id/planId"
+                android:background="@drawable/edit_bg"
+                android:paddingLeft="5dp"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter plan Amount"
+                android:id="@+id/planAmount"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_bg"
+                android:paddingLeft="5dp"
+                android:inputType="number"
+                android:textColor="@color/black"
+
+                android:textColorHint="@color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_bg"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black"
+                android:id="@+id/dataSize"
+                android:hint="Enter data size"
+
+                android:textColorHint="@color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_bg"
+                android:paddingLeft="5dp"
+                android:hint="Enter plan type"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/planType"
+                android:textColorHint="@color/black"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/uploadBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/all"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/button_bg"
+        android:layout_marginTop="36dp"
+        android:text="@string/upload"
+        android:textColor="@color/white" />
+
+
+    <Button
+        android:id="@+id/listBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uploadBtn"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/button_bg"
+        android:layout_marginTop="36dp"
+        android:text="View List"
+        android:textColor="@color/white" />
+
+</RelativeLayout>
