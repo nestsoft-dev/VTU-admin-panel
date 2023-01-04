@@ -3,6 +3,7 @@ package com.netsoftddevelopers.vtuadmin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner selectType;
     int getIndex;
     EditText planId,planAmount,dataSize,planType;
-    Button upload;
+    Button upload,listBtn;
     String planID,planAMOUNT,dataSIZE,planTYPE;
 
     @Override
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         planType = findViewById(R.id.planType);
         
         upload = findViewById(R.id.uploadBtn);
+        listBtn = findViewById(R.id.listBtn);
 
         firestore = FirebaseFirestore.getInstance();
         networkList = new ArrayList<>();
@@ -65,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        listBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,ListActivity.class));
             }
         });
         
