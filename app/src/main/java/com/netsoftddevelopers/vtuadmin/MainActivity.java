@@ -3,6 +3,8 @@ package com.netsoftddevelopers.vtuadmin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.netsoftddevelopers.vtuadmin.Core.ItemAdapter;
@@ -30,14 +31,20 @@ public class MainActivity extends AppCompatActivity {
     private ItemAdapter networkAdapter;
     Spinner selectType;
     int getIndex;
-    EditText planId,planAmount,dataSize,planType;
+    EditText planId,planAmount,dataSize,planType,plangb;
     Button upload,listBtn;
-    String planID,planAMOUNT,dataSIZE,planTYPE;
+    String planID,planAMOUNT,dataSIZE,planTYPE,gb;
+    ProgressDialog progressDialog;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Updating file");
+        progressDialog.setCancelable(false);
 
         selectType = findViewById(R.id.selectType);
         
@@ -45,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         planAmount = findViewById(R.id.planAmount);
         dataSize = findViewById(R.id.dataSize);
         planType = findViewById(R.id.planType);
-        
+        plangb = findViewById(R.id.plangb);
+
         upload = findViewById(R.id.uploadBtn);
         listBtn = findViewById(R.id.listBtn);
 
@@ -84,27 +92,35 @@ public class MainActivity extends AppCompatActivity {
                 planAMOUNT = planAmount.getText().toString();
                 dataSIZE = dataSize.getText().toString();
                 planTYPE = planType.getText().toString();
-                
-                if (getIndex == 1){
-                    createMTN(planID,planAMOUNT,dataSIZE,planTYPE);
-                }else if (getIndex == 2){
-                    createAirtel(planID,planAMOUNT,dataSIZE,planTYPE);
-                }else if (getIndex == 3){
-                    createGlo(planID,planAMOUNT,dataSIZE,planTYPE);
-                }else if (getIndex == 4){
-                    createNINE(planID,planAMOUNT,dataSIZE,planTYPE);
+                gb = plangb.getText().toString();
+
+                if (planID.isEmpty() || planAMOUNT.isEmpty() || dataSIZE.isEmpty() || planTYPE.isEmpty() || gb.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Please fill all filed", Toast.LENGTH_SHORT).show();
+                }else {
+                    progressDialog.show();
+
+                    if (getIndex == 1) {
+                        createMTN(planID, planAMOUNT, gb, dataSIZE, planTYPE);
+                    } else if (getIndex == 2) {
+                        createAirtel(planID, planAMOUNT, gb, dataSIZE, planTYPE);
+                    } else if (getIndex == 3) {
+                        createGlo(planID, planAMOUNT, gb, dataSIZE, planTYPE);
+                    } else if (getIndex == 4) {
+                        createNINE(planID, planAMOUNT, gb, dataSIZE, planTYPE);
+                    }
                 }
             }
         });
 
     }
 
-    private void createMTN(String planID, String planAMOUNT, String dataSIZE, String planTYPE) {
+    private void createMTN(String planID, String planAMOUNT,String gb, String dataSIZE, String planTYPE) {
         String plans = UUID.randomUUID().toString();
         Map<String,Object> transaction = new HashMap<>();
         transaction.put("id",plans);
         transaction.put("planID",planID);
         transaction.put("planAmount",planAMOUNT);
+        transaction.put("gb",gb);
         transaction.put("dataSize",dataSIZE);
         transaction.put("planType",planTYPE);
 
@@ -113,17 +129,19 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(MainActivity.this, "MTN data saved", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
                     }
                 });
 
     }
 
-    private void createAirtel(String planID, String planAMOUNT, String dataSIZE, String planTYPE) {
+    private void createAirtel(String planID, String planAMOUNT, String dataSIZE, String planTYPE, String type) {
         String plans = UUID.randomUUID().toString();
         Map<String,Object> transaction = new HashMap<>();
         transaction.put("id",plans);
         transaction.put("planID",planID);
         transaction.put("planAmount",planAMOUNT);
+        transaction.put("gb",gb);
         transaction.put("dataSize",dataSIZE);
         transaction.put("planType",planTYPE);
 
@@ -131,17 +149,19 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        progressDialog.dismiss();
                         Toast.makeText(MainActivity.this, "Airtel data saved", Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
-    private void createGlo(String planID, String planAMOUNT, String dataSIZE, String planTYPE) {
+    private void createGlo(String planID, String planAMOUNT, String dataSIZE, String planTYPE, String type) {
         String plans = UUID.randomUUID().toString();
         Map<String,Object> transaction = new HashMap<>();
         transaction.put("id",plans);
         transaction.put("planID",planID);
         transaction.put("planAmount",planAMOUNT);
+        transaction.put("gb",gb);
         transaction.put("dataSize",dataSIZE);
         transaction.put("planType",planTYPE);
 
@@ -149,12 +169,13 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        progressDialog.dismiss();
                         Toast.makeText(MainActivity.this, "Glo data saved", Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
-    private void createNINE(String planID, String planAMOUNT, String dataSIZE, String planTYPE) {
+    private void createNINE(String planID, String planAMOUNT, String dataSIZE, String planTYPE, String type) {
         String plans = UUID.randomUUID().toString();
         Map<String,Object> transaction = new HashMap<>();
         transaction.put("id",plans);
@@ -167,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        progressDialog.dismiss();
                         Toast.makeText(MainActivity.this, "NineMobile data saved", Toast.LENGTH_LONG).show();
                     }
                 });

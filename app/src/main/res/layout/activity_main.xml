@@ -73,6 +73,20 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:hint="Enter GB or MB"
+                android:id="@+id/plangb"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_bg"
+                android:paddingLeft="5dp"
+                android:inputType="text"
+                android:maxLength="2"
+                android:textColor="@color/black"
+
+                android:textColorHint="@color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/edit_bg"
                 android:paddingLeft="5dp"
@@ -117,7 +131,7 @@
         android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
         android:background="@drawable/button_bg"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="5dp"
         android:text="View List"
         android:textColor="@color/white" />
 
