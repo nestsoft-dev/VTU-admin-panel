@@ -1,21 +1,17 @@
 package com.netsoftddevelopers.vtuadmin.Adapters;
 
-public class ListModel {
+
+public class DataItem {
     private String iD;
-    private String planID;
+    private String planDuration;
     private String planAmount;
     private String dataSize;
-    private String planType;
 
-    public ListModel() {
-    }
-
-    public ListModel(String iD, String planID, String planAmount, String dataSize, String planType) {
+    public DataItem(String iD, String planDuration, String planAmount, String dataSize) {
         this.iD = iD;
-        this.planID = planID;
+        this.planDuration = planDuration;
         this.planAmount = planAmount;
         this.dataSize = dataSize;
-        this.planType = planType;
     }
 
     public String getiD() {
@@ -26,12 +22,12 @@ public class ListModel {
         this.iD = iD;
     }
 
-    public String getPlanID() {
-        return planID;
+    public String getPlanDuration() {
+        return planDuration;
     }
 
-    public void setPlanID(String planID) {
-        this.planID = planID;
+    public void setPlanDuration(String planDuration) {
+        this.planDuration = planDuration;
     }
 
     public String getPlanAmount() {
@@ -48,13 +44,5 @@ public class ListModel {
 
     public void setDataSize(String dataSize) {
         this.dataSize = dataSize;
-    }
-
-    public String getPlanType() {
-        return planType;
-    }
-
-    public void setPlanType(String planType) {
-        this.planType = planType;
     }
 }

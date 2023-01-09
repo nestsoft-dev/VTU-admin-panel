@@ -5,6 +5,7 @@
     android:layout_margin="2dp"
     app:cardCornerRadius="3dp"
     app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/white"
     android:padding="2dp"
     android:layout_height="wrap_content">
 
@@ -21,15 +22,15 @@
             android:id="@+id/planType"
             android:gravity="start"
             android:textSize="18sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="Plan id:"
-            android:id="@+id/planid"
-            android:gravity="start"
-            android:textSize="18sp"/>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="Plan id:"-->
+<!--            android:id="@+id/planid"-->
+<!--            android:gravity="start"-->
+<!--            android:textSize="18sp"/>-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

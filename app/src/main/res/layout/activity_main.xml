@@ -45,15 +45,16 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
                 android:id="@+id/selectType"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Enter plan ID"
-                android:id="@+id/planId"
+                android:hint="Enter plan Duration"
+                android:id="@+id/planDuration"
                 android:background="@drawable/edit_bg"
                 android:paddingLeft="5dp"
-                android:inputType="number"
+                android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"/>
 
@@ -73,40 +74,40 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Enter GB or MB"
-                android:id="@+id/plangb"
+                android:hint="Enter DataSize"
+                android:id="@+id/planDatasize"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/edit_bg"
                 android:paddingLeft="5dp"
                 android:inputType="text"
-                android:maxLength="2"
+                android:maxLength="8"
                 android:textColor="@color/black"
-
                 android:textColorHint="@color/black"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/edit_bg"
-                android:paddingLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/dataSize"
-                android:hint="Enter data size"
+<!--            <EditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:background="@drawable/edit_bg"-->
+<!--                android:paddingLeft="5dp"-->
+<!--                -->
+<!--                android:textColor="@color/black"-->
+<!--                android:id="@+id/dataSize"-->
+<!--                android:hint="Enter data size"-->
 
-                android:textColorHint="@color/black"/>
+<!--                android:textColorHint="@color/black"/>-->
 
-            <EditText
-                android:layout_width="match_parent"
-                android:textColor="@color/black"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/edit_bg"
-                android:paddingLeft="5dp"
-                android:hint="Enter plan type"
-                android:layout_marginBottom="10dp"
-                android:id="@+id/planType"
-                android:textColorHint="@color/black"/>
+<!--            <EditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:background="@drawable/edit_bg"-->
+<!--                android:paddingLeft="5dp"-->
+<!--                android:hint="Enter plan type"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:id="@+id/planType"-->
+<!--                android:textColorHint="@color/black"/>-->
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

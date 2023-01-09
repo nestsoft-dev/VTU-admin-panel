@@ -12,14 +12,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.netsoftddevelopers.vtuadmin.Adapters.ListModel;
+import com.netsoftddevelopers.vtuadmin.Adapters.DataItem;
+
 import com.netsoftddevelopers.vtuadmin.Adapters.MyListAdapter;
 
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
     FirebaseFirestore firestoremtn,firestoreglo,firestoreairtel,firestoreninemobile;
-    ArrayList<ListModel> mtnlist,glolist,airtelList,nineMobileList;
+    ArrayList<DataItem> mtnlist,glolist,airtelList,nineMobileList;
     MyListAdapter mtnAdapter,gloAdapter,airtelAdapter,ninmobileAdapter;
     RecyclerView recyclerMtn,recyclerAirtel,recyclerGlo,recyclerNineMobile;
 
@@ -34,106 +35,103 @@ public class ListActivity extends AppCompatActivity {
         recyclerGlo = findViewById(R.id.recyclerGlo);
 
 
+
+
+
+
+
+//
+//        airtelList = new ArrayList<>();
+//        airtelAdapter = new MyListAdapter(this,airtelList);
+//        recyclerAirtel.setAdapter(airtelAdapter);
+//        recyclerAirtel.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerAirtel.setHasFixedSize(true);
+
+
+
         firestoremtn = FirebaseFirestore.getInstance();
-        firestoreairtel = FirebaseFirestore.getInstance();
-        firestoreglo = FirebaseFirestore.getInstance();
-        firestoreninemobile = FirebaseFirestore.getInstance();
-
-
         mtnlist = new ArrayList<>();
-        mtnAdapter = new MyListAdapter(this,mtnlist);
-        recyclerMtn.setAdapter(mtnAdapter);
-        recyclerMtn.setLayoutManager(new LinearLayoutManager(this));
-        recyclerMtn.setHasFixedSize(true);
-
-
-        glolist = new ArrayList<>();
-        gloAdapter = new MyListAdapter(this,glolist);
-        recyclerGlo.setAdapter(gloAdapter);
-        recyclerGlo.setLayoutManager(new LinearLayoutManager(this));
-        recyclerGlo.setHasFixedSize(true);
-
-
-        airtelList = new ArrayList<>();
-        airtelAdapter = new MyListAdapter(this,airtelList);
-        recyclerAirtel.setAdapter(airtelAdapter);
-        recyclerAirtel.setLayoutManager(new LinearLayoutManager(this));
-        recyclerAirtel.setHasFixedSize(true);
-
-        nineMobileList = new ArrayList<>();
-        ninmobileAdapter = new MyListAdapter(this,nineMobileList);
-        recyclerNineMobile.setAdapter(ninmobileAdapter);
-        recyclerNineMobile.setLayoutManager(new LinearLayoutManager(this));
-        recyclerNineMobile.setHasFixedSize(true);
-
-
         firestoremtn.collection("MtnData")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (DocumentSnapshot ds : task.getResult()){
-                            ListModel dataItem = new ListModel(
+                            DataItem dataItem = new DataItem(
                                     ds.getString("id"),
-                                    ds.getString("planID"),
+                                    ds.getString("planDuration"),
                                     ds.getString("planAmount"),
-                                    ds.getString("dataSize"),
-                                    ds.getString("planType"));
+                                    ds.getString("dataSize"));
                             mtnlist.add(dataItem);
 
                         }
+                        mtnAdapter = new MyListAdapter(ListActivity.this,mtnlist);
+                        recyclerMtn.setLayoutManager(new LinearLayoutManager(ListActivity.this));
+                        recyclerMtn.setAdapter(mtnAdapter);
                     }
                 });
 
+        firestoreairtel = FirebaseFirestore.getInstance();
+        airtelList = new ArrayList<>();
         firestoreairtel.collection("AirtelData")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (DocumentSnapshot ds : task.getResult()){
-                            ListModel dataItem = new ListModel(
+                            DataItem dataItem = new DataItem(
                                     ds.getString("id"),
-                                    ds.getString("planID"),
+                                    ds.getString("planDuration"),
                                     ds.getString("planAmount"),
-                                    ds.getString("dataSize"),
-                                    ds.getString("planType"));
+                                    ds.getString("dataSize"));
                             airtelList.add(dataItem);
 
                         }
+                        airtelAdapter = new MyListAdapter(ListActivity.this,airtelList);
+                        recyclerAirtel.setAdapter(airtelAdapter);
+                        recyclerAirtel.setLayoutManager(new LinearLayoutManager(ListActivity.this));
                     }
                 });
 
+        firestoreglo = FirebaseFirestore.getInstance();
 
+        glolist = new ArrayList<>();
         firestoreglo.collection("GloData")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (DocumentSnapshot ds : task.getResult()){
-                            ListModel dataItem = new ListModel(
+                            DataItem dataItem = new DataItem(
                                     ds.getString("id"),
-                                    ds.getString("planID"),
+                                    ds.getString("planDuration"),
                                     ds.getString("planAmount"),
-                                    ds.getString("dataSize"),
-                                    ds.getString("planType"));
+                                    ds.getString("dataSize"));
                             glolist.add(dataItem);
 
                         }
+                        gloAdapter = new MyListAdapter(ListActivity.this,glolist);
+                        recyclerGlo.setAdapter(gloAdapter);
+                        recyclerGlo.setLayoutManager(new LinearLayoutManager(ListActivity.this));
                     }
                 });
 
-
+        firestoreninemobile = FirebaseFirestore.getInstance();
+        nineMobileList = new ArrayList<>();
         firestoreninemobile.collection("NineMobile")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (DocumentSnapshot ds : task.getResult()){
-                            ListModel dataItem = new ListModel(
+                            DataItem dataItem = new DataItem(
                                     ds.getString("id"),
-                                    ds.getString("planID"),
+                                    ds.getString("planDuration"),
                                     ds.getString("planAmount"),
-                                    ds.getString("dataSize"),
-                                    ds.getString("planType"));
+                                    ds.getString("dataSize"));
                             nineMobileList.add(dataItem);
 
                         }
+                        ninmobileAdapter = new MyListAdapter(ListActivity.this,nineMobileList);
+                        recyclerNineMobile.setAdapter(ninmobileAdapter);
+                        recyclerNineMobile.setLayoutManager(new LinearLayoutManager(ListActivity.this));
+                        recyclerNineMobile.setHasFixedSize(true);
                     }
                 });
 

@@ -18,9 +18,9 @@ import java.util.ArrayList;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.MyViewHoder> {
     Context context;
-    ArrayList<ListModel> listModels;
+    ArrayList<DataItem> listModels;
 
-    public MyListAdapter(Context context, ArrayList<ListModel> listModels) {
+    public MyListAdapter(Context context, ArrayList<DataItem> listModels) {
         this.context = context;
         this.listModels = listModels;
     }
@@ -34,11 +34,10 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.MyViewHode
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHoder holder, int position) {
-        ListModel model = listModels.get(position);
+        DataItem model = listModels.get(position);
         holder.planAmount.setText("Plan Amount: "+model.getPlanAmount());
-        holder.planid.setText("Plan id: "+model.getPlanID());
         holder.dataSize.setText("Data size: "+model.getDataSize());
-        holder.planType.setText("Plan Type: "+model.getPlanType());
+        holder.planType.setText("Plan Duration: "+model.getPlanDuration());
 
         holder.itemView.setOnClickListener(
                 new View.OnClickListener() {
@@ -48,9 +47,8 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.MyViewHode
                         intent.putExtra("id",listModels.get(position).getiD());
 
                         intent.putExtra("planAmount",listModels.get(position).getPlanAmount());
-                        intent.putExtra("planid",listModels.get(position).getPlanID());
                         intent.putExtra("datasize",listModels.get(position).getDataSize());
-                        intent.putExtra("plantype",listModels.get(position).getPlanType());
+                        intent.putExtra("planDuration",listModels.get(position).getPlanDuration());
 
                         context.startActivity(intent);
                     }
@@ -70,7 +68,6 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.MyViewHode
         public MyViewHoder(@NonNull View itemView) {
             super(itemView);
             planType = itemView.findViewById(R.id.planType);
-            planid = itemView.findViewById(R.id.planid);
             dataSize = itemView.findViewById(R.id.dataSize);
             planAmount = itemView.findViewById(R.id.planAmount);
         }

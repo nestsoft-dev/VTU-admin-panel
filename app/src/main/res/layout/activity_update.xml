@@ -46,16 +46,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/selectType"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Enter plan ID"
-                android:id="@+id/planId"
-                android:background="@drawable/edit_bg"
-                android:paddingLeft="5dp"
-                android:inputType="number"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"/>
+<!--            <EditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:hint="Enter plan ID"-->
+<!--                android:id="@+id/planId"-->
+<!--                android:background="@drawable/edit_bg"-->
+<!--                android:paddingLeft="5dp"-->
+<!--                android:inputType="number"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textColorHint="@color/black"/>-->
 
             <EditText
                 android:layout_width="match_parent"

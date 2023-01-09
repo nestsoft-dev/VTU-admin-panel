@@ -27,7 +27,7 @@ public class UpdateActivity extends AppCompatActivity {
     private ItemAdapter networkAdapter;
     int getIndex;
     Button updateBtn,deleteBtn;
-    String plantype,planid,planamount,datasize,id;
+    String plantype,planamount,datasize,id;
 
 
     @Override
@@ -35,7 +35,6 @@ public class UpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        planId = findViewById(R.id.planId);
         planAmount = findViewById(R.id.planAmount);
         dataSize = findViewById(R.id.dataSize);
         planType = findViewById(R.id.planType);
@@ -45,12 +44,12 @@ public class UpdateActivity extends AppCompatActivity {
 
 
 
-         planid = getIntent().getStringExtra("planid");
          planamount = getIntent().getStringExtra("planAmount");
        datasize = getIntent().getStringExtra("datasize");
-         plantype = getIntent().getStringExtra("plantype");
+         plantype = getIntent().getStringExtra("planDuration");
+         id = getIntent().getStringExtra("id");
 
-        planId.setText(planid);
+
         planAmount.setText(planamount);
         dataSize.setText(datasize);
         planType.setText(plantype);
@@ -79,20 +78,20 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-              String  nplanID = planId.getText().toString();
+
                 String   nplanAMOUNT = planAmount.getText().toString();
                 String   ndataSIZE = dataSize.getText().toString();
                 String  nplanTYPE = planType.getText().toString();
 
 
                 if (getIndex == 1){
-                    createMTN(nplanID,nplanAMOUNT,ndataSIZE,nplanTYPE);
+                    createMTN(nplanAMOUNT,ndataSIZE,nplanTYPE);
                 }else if (getIndex == 2){
-                    createAirtel(nplanID,nplanAMOUNT,ndataSIZE,nplanTYPE);
+                    createAirtel(nplanAMOUNT,ndataSIZE,nplanTYPE);
                 }else if (getIndex == 3){
-                    createGlo(nplanID,nplanAMOUNT,ndataSIZE,nplanTYPE);
+                    createGlo(nplanAMOUNT,ndataSIZE,nplanTYPE);
                 }else if (getIndex == 4){
-                    createNINE(nplanID,nplanAMOUNT,ndataSIZE,nplanTYPE);
+                    createNINE(nplanAMOUNT,ndataSIZE,nplanTYPE);
                 }
             }
         });
@@ -100,6 +99,23 @@ public class UpdateActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+                String   nplanAMOUNT = planAmount.getText().toString();
+                String   ndataSIZE = dataSize.getText().toString();
+                String  nplanTYPE = planType.getText().toString();
+
+
+                if (getIndex == 1){
+                    createMTNDe(nplanAMOUNT,ndataSIZE,nplanTYPE);
+                }else if (getIndex == 2){
+                    createAirtelDe(nplanAMOUNT,ndataSIZE,nplanTYPE);
+                }else if (getIndex == 3){
+                    createGloDe(nplanAMOUNT,ndataSIZE,nplanTYPE);
+                }else if (getIndex == 4){
+                    createNINEDe(nplanAMOUNT,ndataSIZE,nplanTYPE);
+                }
 
             }
         });
@@ -110,9 +126,9 @@ public class UpdateActivity extends AppCompatActivity {
 
     }
 
-    private void createAirtel(String nplanID, String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
+    private void createAirtel( String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
         airtelfirestore = FirebaseFirestore.getInstance();
-airtelfirestore.collection("AirtelData").document(id).update("planID",nplanID,
+        airtelfirestore.collection("AirtelData").document(id).update(
         "planAmount",nplanAMOUNT,
         "dataSize",ndataSIZE,
         "planType",nplanTYPE)
@@ -129,9 +145,9 @@ airtelfirestore.collection("AirtelData").document(id).update("planID",nplanID,
         });
     }
 
-    private void createGlo(String nplanID, String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
+    private void createGlo(String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
         glofirestore = FirebaseFirestore.getInstance();
-        airtelfirestore.collection("GloData").document(id).update("planID",nplanID,
+        glofirestore.collection("GloData").document(id).update(
                         "planAmount",nplanAMOUNT,
                         "dataSize",ndataSIZE,
                         "planType",nplanTYPE)
@@ -148,9 +164,9 @@ airtelfirestore.collection("AirtelData").document(id).update("planID",nplanID,
                 });
     }
 
-    private void createNINE(String nplanID, String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
+    private void createNINE(String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
         ninefirestore = FirebaseFirestore.getInstance();
-        airtelfirestore.collection("NineMobile").document(id).update("planID",nplanID,
+        ninefirestore.collection("NineMobile").document(id).update(
                         "planAmount",nplanAMOUNT,
                         "dataSize",ndataSIZE,
                         "planType",nplanTYPE)
@@ -167,12 +183,79 @@ airtelfirestore.collection("AirtelData").document(id).update("planID",nplanID,
                 });
     }
 
-    private void createMTN(String nplanID, String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
+    private void createMTN( String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
         mtnfirestore = FirebaseFirestore.getInstance();
-        airtelfirestore.collection("MtnData").document(id).update("planID",nplanID,
+        mtnfirestore.collection("MtnData").document(id).update(
                         "planAmount",nplanAMOUNT,
                         "dataSize",ndataSIZE,
                         "planType",nplanTYPE)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(UpdateActivity.this, "Updated", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(UpdateActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+
+
+    private void createAirtelDe( String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
+        airtelfirestore = FirebaseFirestore.getInstance();
+        airtelfirestore.collection("AirtelData").document(id).delete(
+                       )
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(UpdateActivity.this, "Updated", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(UpdateActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void createGloDe(String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
+        glofirestore = FirebaseFirestore.getInstance();
+        glofirestore.collection("GloData").document(id).delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(UpdateActivity.this, "Updated", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(UpdateActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void createNINEDe(String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
+        ninefirestore = FirebaseFirestore.getInstance();
+        ninefirestore.collection("NineMobile").document(id).delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(UpdateActivity.this, "Updated", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(UpdateActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void createMTNDe( String nplanAMOUNT, String ndataSIZE, String nplanTYPE) {
+        mtnfirestore = FirebaseFirestore.getInstance();
+        mtnfirestore.collection("MtnData").document(id).delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
