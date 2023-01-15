@@ -60,7 +60,8 @@ public class ListActivity extends AppCompatActivity {
                                     ds.getString("id"),
                                     ds.getString("planDuration"),
                                     ds.getString("planAmount"),
-                                    ds.getString("dataSize"));
+                                    ds.getString("dataSize"),
+                                    ds.getString("planID"));
                             mtnlist.add(dataItem);
 
                         }
@@ -81,7 +82,8 @@ public class ListActivity extends AppCompatActivity {
                                     ds.getString("id"),
                                     ds.getString("planDuration"),
                                     ds.getString("planAmount"),
-                                    ds.getString("dataSize"));
+                                    ds.getString("dataSize"),
+                                    ds.getString("planID"));
                             airtelList.add(dataItem);
 
                         }
@@ -103,7 +105,8 @@ public class ListActivity extends AppCompatActivity {
                                     ds.getString("id"),
                                     ds.getString("planDuration"),
                                     ds.getString("planAmount"),
-                                    ds.getString("dataSize"));
+                                    ds.getString("dataSize"),
+                                    ds.getString("planID"));
                             glolist.add(dataItem);
 
                         }
@@ -124,7 +127,8 @@ public class ListActivity extends AppCompatActivity {
                                     ds.getString("id"),
                                     ds.getString("planDuration"),
                                     ds.getString("planAmount"),
-                                    ds.getString("dataSize"));
+                                    ds.getString("dataSize"),
+                                    ds.getString("planID"));
                             nineMobileList.add(dataItem);
 
                         }

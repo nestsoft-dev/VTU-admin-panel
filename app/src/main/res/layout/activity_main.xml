@@ -84,18 +84,18 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"/>
 
-<!--            <EditText-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:background="@drawable/edit_bg"-->
-<!--                android:paddingLeft="5dp"-->
-<!--                -->
-<!--                android:textColor="@color/black"-->
-<!--                android:id="@+id/dataSize"-->
-<!--                android:hint="Enter data size"-->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_bg"
+                android:paddingLeft="5dp"
 
-<!--                android:textColorHint="@color/black"/>-->
+                android:textColor="@color/black"
+                android:id="@+id/planID"
+                android:hint="Enter plan ID"
+                android:inputType="number"
+                android:textColorHint="@color/black"/>
 
 <!--            <EditText-->
 <!--                android:layout_width="match_parent"-->

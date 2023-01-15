@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private ItemAdapter networkAdapter;
     Spinner selectType;
     int getIndex;
-    EditText planDuration,planAmount,dataSize;
+    EditText planDuration,planAmount,dataSize,planID;
     Button upload,listBtn;
-    String planAMOUNT,dataSIZE,planDurations;
+    String planAMOUNT,dataSIZE,planDurations,dataID;
     ProgressDialog progressDialog;
 
     @SuppressLint("MissingInflatedId")
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         planAmount = findViewById(R.id.planAmount);
         dataSize = findViewById(R.id.planDatasize);
         planDuration = findViewById(R.id.planDuration);
+        planID = findViewById(R.id.planID);
 
         upload = findViewById(R.id.uploadBtn);
         listBtn = findViewById(R.id.listBtn);
@@ -89,21 +90,22 @@ public class MainActivity extends AppCompatActivity {
                 planAMOUNT = planAmount.getText().toString();
                 dataSIZE = dataSize.getText().toString();
                 planDurations = planDuration.getText().toString();
+                dataID = planID.getText().toString();
 
 
-                if ( planAMOUNT.isEmpty() || dataSIZE.isEmpty() || planDurations.isEmpty()){
+                if ( planAMOUNT.isEmpty() || dataSIZE.isEmpty() || planDurations.isEmpty() || dataID.isEmpty()){
                     Toast.makeText(MainActivity.this, "Please fill all filed", Toast.LENGTH_SHORT).show();
                 }else {
                     progressDialog.show();
 
                     if (getIndex == 1) {
-                        createMTN(planDurations, planAMOUNT, dataSIZE);
+                        createMTN(planDurations, planAMOUNT, dataSIZE,dataID);
                     } else if (getIndex == 2) {
-                        createAirtel(planDurations, planAMOUNT, dataSIZE);
+                        createAirtel(planDurations, planAMOUNT, dataSIZE,dataID);
                     } else if (getIndex == 3) {
-                        createGlo(planDurations, planAMOUNT, dataSIZE);
+                        createGlo(planDurations, planAMOUNT, dataSIZE,dataID);
                     } else if (getIndex == 4) {
-                        createNINE(planDurations, planAMOUNT, dataSIZE);
+                        createNINE(planDurations, planAMOUNT, dataSIZE,dataID);
                     }
                 }
             }
@@ -112,13 +114,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void createMTN(String planDurations, String planAMOUNT,String dataSIZE) {
+    private void createMTN(String planDurations, String planAMOUNT, String dataSIZE, String dataID) {
         String plans = UUID.randomUUID().toString();
         Map<String,Object> transaction = new HashMap<>();
         transaction.put("id",plans);
         transaction.put("planDuration",planDurations);
         transaction.put("planAmount",planAMOUNT);
-        transaction.put("dataSize",dataSIZE+"MB");
+        transaction.put("dataSize",dataSIZE);
+        transaction.put("planID",dataID);
 
         firestore.collection("MtnData").document(plans).set(transaction)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -131,13 +134,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void createAirtel(String planDurations, String planAMOUNT,String dataSIZE) {
+    private void createAirtel(String planDurations, String planAMOUNT,String dataSIZE, String dataID) {
         String plans = UUID.randomUUID().toString();
         Map<String,Object> transaction = new HashMap<>();
         transaction.put("id",plans);
         transaction.put("planDuration",planDurations);
         transaction.put("planAmount",planAMOUNT);
-        transaction.put("dataSize",dataSIZE+"MB");
+        transaction.put("dataSize",dataSIZE);
+        transaction.put("planID",dataID);
 
         firestore.collection("AirtelData").document(plans).set(transaction)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -149,13 +153,14 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void createGlo(String planDurations, String planAMOUNT,String dataSIZE) {
+    private void createGlo(String planDurations, String planAMOUNT,String dataSIZE, String dataID) {
         String plans = UUID.randomUUID().toString();
         Map<String,Object> transaction = new HashMap<>();
         transaction.put("id",plans);
         transaction.put("planDuration",planDurations);
         transaction.put("planAmount",planAMOUNT);
-        transaction.put("dataSize",dataSIZE+"MB");
+        transaction.put("dataSize",dataSIZE);
+        transaction.put("planID",dataID);
 
         firestore.collection("GloData").document(plans).set(transaction)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -167,13 +172,14 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void createNINE(String planDurations, String planAMOUNT,String dataSIZE) {
+    private void createNINE(String planDurations, String planAMOUNT,String dataSIZE, String dataID) {
         String plans = UUID.randomUUID().toString();
         Map<String,Object> transaction = new HashMap<>();
         transaction.put("id",plans);
         transaction.put("planDuration",planDurations);
         transaction.put("planAmount",planAMOUNT);
-        transaction.put("dataSize",dataSIZE+"MB");
+        transaction.put("dataSize",dataSIZE);
+        transaction.put("planID",dataID);
 
 
         firestore.collection("NineMobile").document(plans).set(transaction)

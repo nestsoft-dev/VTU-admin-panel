@@ -6,12 +6,14 @@ public class DataItem {
     private String planDuration;
     private String planAmount;
     private String dataSize;
+    private String planId;
 
-    public DataItem(String iD, String planDuration, String planAmount, String dataSize) {
+    public DataItem(String iD, String planDuration, String planAmount, String dataSize, String planId) {
         this.iD = iD;
         this.planDuration = planDuration;
         this.planAmount = planAmount;
         this.dataSize = dataSize;
+        this.planId = planId;
     }
 
     public String getiD() {
@@ -44,5 +46,13 @@ public class DataItem {
 
     public void setDataSize(String dataSize) {
         this.dataSize = dataSize;
+    }
+
+    public String getPlanId() {
+        return planId;
+    }
+
+    public void setPlanId(String planId) {
+        this.planId = planId;
     }
 }
